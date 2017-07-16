@@ -1,0 +1,40 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 书签管理</a></li>
+            <li class="active">搜索链接</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <br>
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-striped">
+                    <tr>
+                        <th class="hidden-xs hidden-sm hidden-md">#</th>
+                        <th>分类</th>
+                        <th>别名</th>
+                        <th class="hidden-xs hidden-sm hidden-md">备注</th>
+                    </tr>
+                    {volist name="links" id="link"}
+                    <tr>
+                        <td class="hidden-xs hidden-sm hidden-md">{$key+1}.</td>
+                        <td>{$link.catalog}</td>
+                        <td><a target="_blank" href="{$link.link}">{$link.name}</a></td>
+                        <td class="hidden-xs hidden-sm hidden-md">
+                            {$link.comments}
+                        </td>
+                    </tr>
+                    {/volist}
+                </table>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

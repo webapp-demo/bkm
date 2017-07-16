@@ -1,0 +1,57 @@
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 table-responsive">
+                <div class="nav-tabs-custom tab-success">
+                    <ul class="nav nav-tabs">
+                        {volist name="catalogs" id="ca"}
+                        <li class="{$key+1==1 ? 'active' : ''}"><a href="#tab_{$ca.id}" data-toggle="tab">{$ca.name}</a>
+                        </li>
+                        {/volist}
+
+                    </ul>
+                    <div class="tab-content">
+                        {volist name="catalogs" id="ca"}
+                        <div class="tab-pane {$key+1==1 ? 'active' : ''}" id="tab_{$ca.id}">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th style="width: 80px"><a href="#" data-toggle="modal" data-target="#myModal"
+                                                               data-href="{:url('delbkm', ['id' => $ca.id])}"
+                                                               data-extra="确认删除标签{$ca.name}"
+                                                               class="text-black">#</a></th>
+                                    <th>别名</th>
+                                    <th>操作</th>
+                                    <th class="hidden-xs hidden-sm hidden-md">备注</th>
+                                </tr>
+                                {foreach name="all_array[$ca.id]" item="link" key="k"}
+                                <tr>
+                                    <td>{$k+1}.</td>
+                                    <td><a target="_blank" href="{$link.link}">{$link.name}</a></td>
+                                    <td>
+                                        <a href="{:url('editlink', ['id' => $link.id])}"><span
+                                                class="glyphicon glyphicon-edit text-light-blue"></span></a>
+                                        &nbsp;
+                                        <a href="{:url('dellink', ['id' => $link.id])}"><span
+                                                class="glyphicon glyphicon-trash text-yellow"></span></a>
+
+                                    </td>
+                                    <td class="hidden-xs hidden-sm hidden-md">
+                                        {$link.comments}
+                                    </td>
+                                </tr>
+                                {/foreach}
+                            </table>
+                        </div>
+                        {/volist}
+
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
+            </div>
+        </div>
+        <!-- nav-tabs-custom -->
+    </section>
+    {include file="../application/index/view/modalbase.html" id="myModal" type="" title="危险操作" /}
+
+</div>
+<!-- /.col -->

@@ -1,0 +1,55 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 书签列表</a></li>
+            <li class="active">编辑链接</li>
+        </ol>
+    </section>
+    <br>
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-md-6 col-md-offset-3">
+                <div class="box box-info">
+                    <form role="form" action="{:url('updatelink', ['id' => $link.id])}">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>分类名称</label>
+                                <select class="form-control" name="ca">
+                                    {volist name="catalogs" id="ca"}
+                                    {eq name="link.catalog" value="$ca.name"}
+                                    <option selected>{$ca.name}</option>
+                                    {else/}
+                                    <option>{$ca.name}</option>
+                                    {/eq}
+                                    {/volist}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>书签名称</label>
+                                <input type="text" class="form-control" name="linkname" id="linkname"
+                                       value="{$link.name}" required>
+                            </div>
+                            <div class="form-group">
+                                <label>链接地址</label>
+                                <input type="text" class="form-control" name="linkaddr" id="linkaddr"
+                                       value="{$link.link}" required>
+                            </div>
+                            <div class="form-group">
+                                <label>备注</label>
+                                <textarea class="form-control" cols="11" rows="6" name="linkcomments" id="linkcomments">{$link.comments}</textarea>
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

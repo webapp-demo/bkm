@@ -1,0 +1,42 @@
+<aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="__PUBLIC__/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>{$Think.session.user}</p>
+                <!-- Status -->
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+
+
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+            <li class="header">功能菜单</li>
+
+            {mytag:menu name="summary" uri="/index/index/index" icon="fa fa-pie-chart" text="信息摘要" /}
+
+            {mytag:menu name="bkmlis" uri="/bkms/index/index" icon="fa fa-list" text="书签列表" /}
+
+            {mytag:menu name="bkmmg" uri="/bkms/index/add" icon="fa fa-bookmark" text="书签管理" /}
+
+
+            <!--用户管理-->
+            {mytag:tree name="usermg" icon="fa fa-users" text="用户管理"}
+
+                {if condition="is_admin($Think.session.role)"}
+                    {mytag:leaf name="code" uri="/auth/invitation/index" text="邀请码" /}
+                    {mytag:leaf name="userlist" uri="/auth/index/userlist" text="管理用户" /}
+                {/if}
+                    {mytag:leaf name="changepw" uri="/auth/index/changepw" text="修改密码" /}
+
+            {/mytag:tree}
+        </ul>
+    </section>
+</aside>

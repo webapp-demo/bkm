@@ -1,0 +1,62 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 用户管理</a></li>
+            <li class="active">邀请码</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Your Page Content Here -->
+
+        <div class="row">
+            <div class="col-xs-8 col-md-4 col-lg-2">
+                <a class="btn btn-block btn-social btn-twitter" href="{:url('create')}">
+                    <i class="fa fa-plus-circle"></i> 新增邀请码
+                </a>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-6">
+                <table class="table table-striped">
+                    <tr>
+                        <th class="hidden-xs hidden-sm hidden-md">#</th>
+                        <th>邀请码</th>
+                        <th>状态</th>
+                        <th>标记</th>
+                        <th>操作</th>
+                    </tr>
+                    {volist name="codes" id="code"}
+                    <tr>
+                        <td class="hidden-xs hidden-sm hidden-md">{$key+1}.</td>
+                        <td>{$code.code}</td>
+                        <td>
+                            {eq name="code.status" value="1"}
+                            <span class="label label-success">可用</span>
+                            {else/}
+                            <span class="label label-warning">待用</span>
+                            {/eq}
+                        </td>
+                        <td>
+                            {eq name="code.status" value="1"}
+                            <a href="{:url('edit', ['id' => $code.id])}"><span class="badge bg-blue">送出</span></a>
+                            {else/}
+                            <span class="badge bg-gray">送出</span>
+                            {/eq}
+                        </td>
+                        <td><a href="{:url('delete', ['id' => $code.id])}"><span class="badge bg-red">删除</span></a></td>
+                    </tr>
+                    {/volist}
+                </table>
+            </div>
+        </div>
+        {$codes->render()}
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

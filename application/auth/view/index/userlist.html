@@ -1,0 +1,53 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 用户管理</a></li>
+            <li class="active">管理用户</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+<br>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>#</th>
+                        <th>用户名</th>
+                        <th>中文名</th>
+                        <th>邮箱</th>
+                        <th>电话</th>
+                        <th>状态</th>
+                        <th>角色</th>
+                        <th>创建时间</th>
+                    </tr>
+                    {volist name="users" id="u"}
+                    <tr>
+                        <td>{$key+1}.</td>
+                        <td>{$u.name}</td>
+                        <td>{$u.realname}</td>
+                        <td>{$u.email}</td>
+                        <td>{$u.phone}</td>
+                        <td>
+                            {eq name="u.status" value="1"}
+                            <span class="label label-success">正常</span>
+                            {else/}
+                            <span class="label label-warning">禁用</span>
+                            {/eq}
+                        </td>
+                        <td>{$u.role_text}</td>
+                        <td>{$u.create_time}</td>
+                    </tr>
+                    {/volist}
+                </table>
+                {$users->render()}
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

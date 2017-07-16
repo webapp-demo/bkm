@@ -1,0 +1,73 @@
+<div class="content-wrapper">
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <!--添加书签-->
+                <div class="box box-success">
+                <form role="form" action="{:url('bkms/index/addbkm')}" method="post">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>分类名称</label>
+                            <input type="text" class="form-control" name="caname" id="caname" placeholder="书签分类" required>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </div>
+                </form>
+                </div>
+
+                <!--搜索链接-->
+                <div class="box box-success">
+                    <form role="form" action="{:url('bkms/index/searchlink')}" method="post">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>搜索链接</label>
+                                <input type="text" class="form-control" name="linkn" id="linkn" placeholder="输入链接名称" required>
+                            </div>
+                        </div>
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-success">搜索</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+                <!--新增链接-->
+                <div class="box box-success">
+                <form role="form" action="/bkms/index/addlink" method="post">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>分类名称</label>
+                            <select class="form-control" name="ca">
+                                {volist name="catalogs" id="ca"}
+                                <option>{$ca.name}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>书签名称</label>
+                            <input type="text" class="form-control" name="linkname" id="linkname" placeholder="书签名称" required>
+                        </div>
+                        <div class="form-group">
+                            <label>链接地址</label>
+                            <input type="text" class="form-control" name="linkaddr" id="linkaddr" placeholder="链接网址，以http、https开头" required>
+                        </div>
+
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
